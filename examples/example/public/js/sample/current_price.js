@@ -136,7 +136,7 @@ function newSeq_11770128(len_11770131) {
 
 }
 function print(str_12167004) {
-  var F={procname:"js_output.print",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/js_output.nim",line:0};
+  var F={procname:"current_price.print",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/sample/current_price.nim",line:0};
   framePtr = F;
     F.line = 2;
     rawEcho(cstrToNimstr(str_12167004));
@@ -144,9 +144,19 @@ function print(str_12167004) {
 
   
 }
-var F={procname:"module js_output",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/js_output.nim",line:0};
+var F={procname:"module current_price",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/sample/current_price.nim",line:0};
 framePtr = F;
 framePtr = F.prev;
-var F={procname:"module js_output",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/js_output.nim",line:0};
+function fetchCurrency() {
+  var F={procname:"current_price.fetchCurrency",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/sample/current_price.nim",line:0};
+  framePtr = F;
+  framePtr = F.prev;
+
+  
+}
+var F={procname:"module current_price",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/sample/current_price.nim",line:0};
+framePtr = F;
+framePtr = F.prev;
+var F={procname:"module current_price",prev:framePtr,filename:"/root/project/examples/example/app/http/views/scripts/sample/current_price.nim",line:0};
 framePtr = F;
 framePtr = F.prev;

@@ -1,6 +1,6 @@
 import price_value_objects
-import price_entity
 import price_repository_interface
+import price_entity
 
 
 type PriceService* = ref object

@@ -111,5 +111,5 @@ proc errorRedirect*(request:Request, params:Params):Future[Response] {.async.} =
 
 proc jsOutput*(request:Request, params:Params):Future[Response] {.async.} =
   let usecase = newCurrentPriceUsecase()
-  let resp = await usecase.get()
-  return render( currentPriceView() )
+  let currentPrice = await usecase.get()
+  return render( currentPriceView(currentPrice) )
