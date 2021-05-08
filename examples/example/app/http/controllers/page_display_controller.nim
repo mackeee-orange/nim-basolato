@@ -2,12 +2,16 @@ import json, times, strformat
 # framework
 import ../../../../../src/basolato/controller
 import allographer/query_builder
+# usecase
+import ../../core/usecases/current_price_usecase
 # view
 import ../views/pages/welcome_view
 import ../views/pages/sample/react_view
 import ../views/pages/sample/material_ui_view
 import ../views/pages/sample/vuetify_view
 import ../views/pages/sample/with_style_view
+import ../views/pages/sample/with_style_view
+import ../views/pages/sample/current_price_view
 
 
 proc index*(request:Request, params:Params):Future[Response] {.async.} =
@@ -104,3 +108,8 @@ proc errorRedirect*(request:Request, params:Params):Future[Response] {.async.} =
   if id mod 2 == 1:
     raise newException(ErrorRedirect, "/sample/login")
   return render($id)
+
+proc jsOutput*(request:Request, params:Params):Future[Response] {.async.} =
+  let usecase = newCurrentPriceUsecase()
+  let resp = await usecase.get()
+  return render( currentPriceView() )

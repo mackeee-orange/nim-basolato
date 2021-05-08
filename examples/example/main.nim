@@ -60,4 +60,6 @@ groups "/sample":
   routes.get("/validation", validation_controller.index)
   routes.post("/validation", validation_controller.store)
 
+  routes.get("/js_output", page_display_controller.jsOutput)
+
 serve(routes)

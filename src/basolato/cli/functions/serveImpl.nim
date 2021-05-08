@@ -1,4 +1,5 @@
 import os, tables, times, re, strformat, osproc, terminal
+import jsCompireImpl
 
 let
   sleepTime = 2
@@ -24,6 +25,7 @@ proc runCommand(port:int) =
   try:
     if pid > 0:
       discard execShellCmd(&"kill {pid}")
+    jsCompire()
     if execShellCmd(&"nim c --putenv:PORT={port} -d:ssl main") > 0:
       raise newException(Exception, "")
     echoMsg(bgGreen, "[SUCCESS] Building dev server")
@@ -39,9 +41,9 @@ proc serve*(port=5000) =
   ## Run dev application with hot reload.
   runCommand(port)
   while true:
-    sleep sleepTime * 1000
-    for f in walkDirRec(currentDir, {pcFile}):
-      if f.find(re"(\.nim|\.nims|\.html)$") > -1:
+    sleep(sleepTime * 1000)
+    for f in walkDirRec(currentDir):
+      if f.find(re"(\.nim|\.nims|\.html|.env|.env.local)$") > -1:
         var modTime: Time
         try:
           modTime = getFileInfo(f).lastWriteTime

@@ -7,7 +7,10 @@ import
   strutils,
   asyncdispatch,
   cgi,
-  re
+  re,
+  os,
+  osProc,
+  macros
 export
   templates,
   asyncdispatch,
