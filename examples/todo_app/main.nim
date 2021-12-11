@@ -23,9 +23,11 @@ routes.post("/signup", signup_controller.store)
 routes.get("/", todo_controller.toppage)
 
 routes.middleware(re"/todo", auth_middleware.mustBeLoggedIn)
-routes.get("/todo", todo_controller.index)
-routes.get("/todo/create", todo_controller.create)
-routes.post("/todo/create", todo_controller.store)
-routes.post("/todo/change-sort", todo_controller.changeSort)
+groups "/todo":
+  routes.get("", todo_controller.index)
+  routes.get("/create", todo_controller.create)
+  routes.post("/create", todo_controller.store)
+  routes.post("/change-sort", todo_controller.changeSort)
+  routes.post("/{uuid:string}", todo_controller.show)
 
 serve(routes)

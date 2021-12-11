@@ -4,6 +4,7 @@ import ../../../../../src/basolato/controller
 import ../../../../../src/basolato/request_validation
 # view
 import ../views/pages/todo/index_view
+import ../views/pages/todo/index_view_model
 import ../views/pages/todo/create_view
 # usecase
 import ../../usecases/todo/display_index_usecase
@@ -22,10 +23,12 @@ proc index*(context:Context, params:Params):Future[Response] {.async.} =
   }
   let usecase = DisplayIndexUsecase.new()
   let data = await usecase.run()
-  return render(indexView(loginUser, data))
+  let viewModel = IndexViewModel.new(loginUser, data)
+  return render(indexView(viewModel))
 
 proc show*(context:Context, params:Params):Future[Response] {.async.} =
-  let id = params.getInt("id")
+  let uuid = params.getStr("uuid")
+  echo uuid
   return render("show")
 
 proc create*(context:Context, params:Params):Future[Response] {.async.} =

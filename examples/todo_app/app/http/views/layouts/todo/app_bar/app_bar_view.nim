@@ -1,7 +1,7 @@
 import ../../../../../../../src/basolato/view
+import ./app_bar_view_model
 
-
-proc appBarView*(name:string):string =
+proc appBarView*(params:AppBarViewModel):string =
   style "css", style:"""
     <style>
     </style>
@@ -36,7 +36,7 @@ proc appBarView*(name:string):string =
       </div>
       <div class="navbar-menu" id="$(script.element("navbarMenu"))">
         <div class="navbar-end">
-          <p class="navbar-item">Login user: $(name.get)</p>
+          <p class="navbar-item">Login user: $(params.name)</p>
           <p class="navbar-item">
             <a class="button is-light" href="/signout">
               Sign out
