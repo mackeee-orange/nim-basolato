@@ -1,8 +1,8 @@
 import json
-import ../../../../../../../src/basolato/view
+import ../../../../../../../../../src/basolato/view
+import task_view_model
 
-
-proc taskView*(todo:JsonNode, isDisplayUp, isDisplayDown:bool, upId, downId:string, statusId:int):string =
+proc taskView*(viewMode:TaskViewModel):string =
   style "css", style:"""
     <style>
       .columns {

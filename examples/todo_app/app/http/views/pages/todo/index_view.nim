@@ -1,9 +1,10 @@
 import json
 import ../../../../../../../src/basolato/view
 import ../../layouts/application_view
-import ../../layouts/todo/app_bar_view
-import ../../layouts/todo/status_view
-import ../../layouts/todo/app_bar_view_model
+import ../../layouts/todo/app_bar/app_bar_view
+import ../../layouts/todo/app_bar/app_bar_view_model
+import ../../layouts/todo/status/status_view
+import ../../layouts/todo/status/status_view_model
 import ./index_view_model
 
 proc impl(viewModel:IndexViewModel):string =

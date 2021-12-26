@@ -1,5 +1,6 @@
 import json
-import ../../layouts/todo/app_bar_view_model
+import ../../layouts/todo/app_bar/app_bar_view_model
+import ../../layouts/todo/status/status_view_model
 
 type LoginUser* = ref object
   id:int
@@ -19,7 +20,7 @@ proc isAuth*(self:LoginUser):bool =
 type IndexViewModel* = ref object
   appBarViewModel*:AppBarViewModel
   loginUser*:LoginUser
-  data*: JsonNode
+  statusViewModel*: StatusViewModel
 
 proc new*(_:type IndexViewModel, loginUser, data:JsonNode):IndexViewModel =
   return IndexViewModel(

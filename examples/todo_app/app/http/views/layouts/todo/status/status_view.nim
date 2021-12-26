@@ -1,9 +1,11 @@
 import json, std/enumerate
-import ../../../../../../../src/basolato/view
-import task_view
+import ../../../../../../../../src/basolato/view
+import
+  status_view_model,
+  task/task_view
 
 
-proc statusView*(status, data:JsonNode):string =
+proc statusView*(viewModel:StatusViewModel):string =
   style "css", style:"""
     <style>
       .className {
@@ -20,10 +22,13 @@ proc statusView*(status, data:JsonNode):string =
     <div class="column">
       <div class="card">
         <div class="card-header">
-          <h2 class="title is-2">$(status["name"].get)</h2>
+          <h2 class="title is-2">$(viewModel.name)</h2>
         </div>
         <div class="card-content">
-          ${
+          $for taskViewModel in viewModel.taskViewModels{
+            taskView(taskViewModel)
+          }
+          <!-- ${
             let statusColumn = data["transaction"][status["name"].getStr]
           }
           $for i, todo in enumerate(statusColumn){
@@ -44,7 +49,7 @@ proc statusView*(status, data:JsonNode):string =
                 status["id"].getInt,
               )
             )
-          }
+          } -->
         </div>
       </div>
     </div>
