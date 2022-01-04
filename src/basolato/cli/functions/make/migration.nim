@@ -1,4 +1,4 @@
-import os, strformat, terminal, strutils
+import os, strformat, terminal, times, strutils
 import utils
 
 proc makeMigration*(target:string, message:var string):int =
