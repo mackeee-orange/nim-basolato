@@ -2,9 +2,8 @@ import os, strformat, terminal, strutils
 import utils
 
 proc makeMigration*(target:string, message:var string):int =
-  # let now = now().format("yyyyMMddHHmmss")
-  # var targetPath = &"{getCurrentDir()}/database/migrations/migration{now}{target}.nim"
-  var targetPath = &"{getCurrentDir()}/database/migrations/migration_{target}.nim"
+  let now = now().format("yyyyMMddHHmmss")
+  var targetPath = &"{getCurrentDir()}/database/migrations/{now}_{target}.nim"
 
   if isFileExists(targetPath): return 0
   if isTargetContainSlash(target, "migration file name"): return 0
