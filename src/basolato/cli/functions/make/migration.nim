@@ -3,7 +3,8 @@ import utils
 
 proc makeMigration*(target:string, message:var string):int =
   let now = now().format("yyyyMMddHHmmss")
-  var targetPath = &"{getCurrentDir()}/database/migrations/{now}_{target}.nim"
+  let moduleName = &"migration_{now}_{target}"
+  var targetPath = &"{getCurrentDir()}/database/migrations/{moduleName}.nim"
 
   if isFileExists(targetPath): return 0
   if isTargetContainSlash(target, "migration file name"): return 0
@@ -39,7 +40,7 @@ proc {target}*() [.async.] =
     if row == "":
       offsets.add(i)
   # insert array
-  textArr.insert(&"import migration_{target}", offsets[0])
+  textArr.insert(&"import {moduleName}", offsets[0])
   textArr.insert(&"  waitFor {target}()", offsets[1]+1)
   # write in file
   f = open(targetPath, fmWrite)
